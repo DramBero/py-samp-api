@@ -45,4 +45,4 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 ## Acknowledgments
 
 * The Autohotkey SAMP-UDF contributors, whose offsets and most of the functions I used as a base: Chuck_Floyd, Suchty112, paul-phoenix, Agrippa1994, RawDev, ELon, democrazy, MurKotik, McFree, aknqkzxlcs, Godarck, Слюнявчик, MrGPro, Phoenixxx_Czar, Dworkin, Ghost29, slavawar, Artur_iOS, ByNika
-* The Autohotkey and C++ SAMP API contributors, whose offsets and some of the functions I used as a base.
+* The Autohotkey and C++ SAMP API contributors, whose offsets and some of the functions I used as a base: Agrippa1994, MarcelGerber.
