@@ -20,7 +20,7 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 ## Authors
 
-* **Teodoro_Bagwell** - *Translation and reworking of the most commonly used SAMP-client API functions to Python, finding some of the offsets.* - [DramBero](https://github.com/DramBero)
+* **DramBero (Teodoro_Bagwell)** - *Translation and reworking of the most commonly used SAMP-client API functions to Python, finding some of the offsets.* - [DramBero](https://github.com/DramBero)
 
 ## License
 
