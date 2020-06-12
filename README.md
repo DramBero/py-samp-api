@@ -14,7 +14,23 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 **get_distance(coords1, coords2)** - accepts two vectors as arrays of three floats, returns the distance between them as a float.
 
-**get_player_money()** - returns local player's money.
+**get_player_money()** - returns local player's money as an integer.
+
+**get_player_skin()** - returns local player's skin ID as an integer.
+
+**get_player_wanted()** - returns local player's wanted level as an integer.
+
+**get_player_weapon()** - returns local player's weapon ID as an integer.
+
+**get_resolution()** - returns game resolution as a list of two integers.
+
+**is_player_in_vehicle()** - returns True (boolean) if the local player is in a vehicle and False (boolean) if he is not.
+
+**is_player_driver()** - returns True (boolean) if the local player is in the vehicles driver seat and False (boolean) if he is not.
+
+**get_vehicle_health()** - returns the used vehicle health as a float.
+
+**get_vehicle_id()** - returns the used vehicle ID as an integer.
 
 *Will write down the rest of the functions from the source code in the later updates.*
 
