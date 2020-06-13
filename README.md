@@ -66,6 +66,34 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 **set_time(hour)** - sets the local player's time (hour) to the accepted integer.
 
+**hp_patch()** - toggles the clients HP patch.
+
+**set_player_health(hp)** - sets local player's HP to the accepted integer.
+
+**set_player_armor(hp)** - sets local player's armor to the accepted integer.
+
+**set_vehicle_health(hp)** - sets used vehicle HP to the accepted integer.
+
+**toggle_anti_bikefall(tog = -1)** - if tog is 1 or True - turns on the anti-bikefall patch, else - disables it.
+
+**anti_crash()** - turns on the anti-crash patch.
+
+**print_low(text, time)** - accepts a string and an integer. Shows the string as a GTA-hardcoded text to the specified amount of time.
+
+**get_chat_line_ex(line = 0)** - accepts an integer. Returns the chat line (reads it from memory) as a string. 0 - is the last chat line, and so on.
+
+**set_chat_line_ex(text, line = 0)** accepts a string and an integer. Sets the specified chat line to the accepted string. 0 - is the last chat line, and so on.
+
+**get_chat_line_color(line = 0)** - accepts an integer. Returns the chat line color as an integer (hex-coded color). 0 - is the last chat line, and so on.
+
+**get_chat_line_timestamp(line = 0, unix = False)** - accepts an integer and a boolean. Gets the timestamp of the specified line. 0 - is the last chat line, and so on. If "unix" is set to True - returns the unix-timestamp without the converting.
+
+**get_mem_chatlog()** - prints the full memory chatlog to the python console. Used only for testing.
+
+**add_chat_message(wtext, color = 'FFFFFF', timestamp = True)** - accepts a string for the message text, a string for the hex-coded color of the message, and a boolean for toggling of the message's timestamp. Adds a chat line that only the local player can see.
+
+**send_chat(wtext)** - accepts a string. Sends the string as a chat input.
+
 *Will write down the rest of the functions from the source code in the later updates.*
 
 ## Authors
