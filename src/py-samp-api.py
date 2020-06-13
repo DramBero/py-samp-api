@@ -74,13 +74,6 @@ ADDR_WHITE_COLOR             = 0xBAB238
 ADDR_YELLOW_COLOR            = 0xBAB244
 ADDR_RADIO_COLOR             = 0xBAB24C
 
-# Player States
-PLAYER_STATE_LEAVING_VEHICLE 	= 0
-PLAYER_STATE_NORMAL 			= 1
-PLAYER_STATE_DRIVING 			= 50
-PLAYER_STATE_DYING 				= 54
-PLAYER_STATE_DEAD 				= 55
-
 
 aircraft_models = (417, 425, 447, 460, 469, 476, 487, 488, 497, 511, 512,     \
                    513, 519, 520, 548, 553, 563, 577, 592, 593)
@@ -204,6 +197,11 @@ SIZE_SAMP_CHATMSG                    = 0xFC
 SAMP_KILLSTAT_OFFSET                 = 0x21A0EC
 SAMP_CHKPNT_OFFSET 				     = 0xC7DEEA
 
+PLAYER_STATE_LEAVING_VEHICLE 	= 0
+PLAYER_STATE_NORMAL 			= 1
+PLAYER_STATE_DRIVING 			= 50
+PLAYER_STATE_DYING 				= 54
+PLAYER_STATE_DEAD 				= 55
 
 GAMESTATE_WAIT_CONNECT 		= 9
 GAMESTATE_CONNECTING 		= 13
@@ -278,11 +276,10 @@ i_update_tick = 2500
 ''' INTERNAL FUNCTIONS BLOCK '''
 
 def get_pid(name):
-    pid = 0
     hw = FindWindow(0, name)
     if hw:
-        pid = win32process.GetWindowThreadProcessId(hw)[1]
-    return pid
+        return win32process.GetWindowThreadProcessId(hw)[1]
+    return 0
 
 
 def open_process(pid):
@@ -314,8 +311,7 @@ def read_string(hprocess, dwaddress, dwlen, encoding = 'windows-1251'):
             char2.append(buffer[x])
         else:
             break
-    ret = char2.decode(encoding, errors="ignore")
-    return ret
+    return char2.decode(encoding, errors='ignore')
 
 
 def read_dword(hprocess, dwaddress):
@@ -337,26 +333,23 @@ def read_mem(hprocess, dwaddress, dwlen):
 def virtual_alloc_ex(hprocess, dwsize, flprt):
     if not hprocess:
         return 0
-    ret = windll.kernel32.VirtualAllocEx(hprocess, 0, dwsize,                 \
+    return windll.kernel32.VirtualAllocEx(hprocess, 0, dwsize,                \
                                          0x1000 | 0x2000, flprt)
-    return ret
 
 
 def virtual_free_ex(hprocess, lpaddr, dwsize, dwtype):
     if not hprocess:
         return 0
-    ret = windll.kernel32.VirtualFreeEx(hprocess, lpaddr, dwsize, dwtype)
-    return ret
+    return windll.kernel32.VirtualFreeEx(hprocess, lpaddr, dwsize, dwtype)
 
 
 def create_remote_thread(hprocess, lpattr, dwstacksz, lpstrtaddr, lpparam,    \
                          dwflags, lpthreadid):
     if not hprocess:
         return 0
-    ret = windll.kernel32.CreateRemoteThread(hprocess, lpattr, dwstacksz,     \
+    return windll.kernel32.CreateRemoteThread(hprocess, lpattr, dwstacksz,    \
                                              lpstrtaddr, lpparam, dwflags,    \
                                              lpthreadid)
-    return ret
 
 
 def wait_for_single_object(hthread, ms):
@@ -387,7 +380,6 @@ def refresh_gta():
         return False
     if h_gta == 0 or dw_gtapid != pid:
         h_gta = open_process(pid)
-        # ERROR CHECK
         dw_gtapid = pid
         dw_samp = 0x0
         p_memory = 0x0
@@ -417,7 +409,6 @@ def refresh_memory():
         return False
     if not p_memory:
         p_memory = virtual_alloc_ex(h_gta, 6144, 0x40)
-        # ERROR CHECK
         p_param1 = p_memory
         p_param2 = p_memory + 1024
         p_param3 = p_memory + 2048
@@ -428,7 +419,6 @@ def refresh_memory():
 
 
 def check_handles():
-    # continue
     if not refresh_gta() or not refresh_samp() or not refresh_memory():
         return False
     else:
@@ -961,31 +951,11 @@ def remove_chat_line(line = 0):
             # LATER
 '''
 
-# WALL HACK CRASHES SAMP
-def wall_hack(tog = 1):
-    if not check_handles():
-        return -1
-    byte = read_mem(h_gta, dw_samp + 0x70F1A, 1)
-    if (tog == -1 and byte == 232) or (tog == True) or (tog == 1):
-        write_mem(h_gta, dw_samp + 0x70F1A, 0x9090909090)
-        write_mem(h_gta, dw_samp + 0x6FE0A, 0x9090909090)
-        write_mem(h_gta, dw_samp + 0x70E24, 0x909090909090)
-        write_mem(h_gta, dw_samp + 0x6FD14, 0x909090909090)
-        return True
-    elif (tog == -1 and byte == 144) or not tog:
-        write_mem(h_gta, dw_samp + 0x70F1A, 0xE8B1AD0300)
-        write_mem(h_gta, dw_samp + 0x6FE0A, 0xE8C1BE0300)
-        write_mem(h_gta, dw_samp + 0x70E24, 0x0F8A71010000)
-        write_mem(h_gta, dw_samp + 0x6FD14, 0x0F8A50010000)
-        return False
-    return -1
-
 
 def get_mem_chatlog():
     if not check_handles():
         return False
     for i in range(100):
-#    get_chat_line_color(99 - i)
         if get_chat_line_color(99-i) != '000000'                              \
         and get_chat_line_ex(99 - i) != '':
             color = '{' + get_chat_line_color(99-i) + '}'
@@ -1103,8 +1073,6 @@ def refresh_scoreboard():
     inject_data[10] = 0xC3
     windll.kernel32.WriteProcessMemory(h_gta, p_inject_func,                  \
                                        inject_data, 11, 0)
-#    for i in range(len(inject_data)):
-#        print(hex(inject_data[i]), ' ', end = '')
     h_thread = create_remote_thread(h_gta, 0, 0, p_inject_func, 0, 0, 0)
     wait_for_single_object(h_thread, 0xFFFFFFFF)
     close_handle(h_thread)
@@ -1117,7 +1085,6 @@ def update_scoreboard():
         return 0
     if not refresh_scoreboard():
         return 0
-    # refresh_scoreboard = a_tick_count
     dw_address = read_dword(h_gta, dw_samp + SAMP_INFO_OFFSET)
     dw_address = read_dword(h_gta, dw_address + SAMP_POOLS)
     dw_players = read_dword(h_gta, dw_address + SAMP_PPOOL_PLAYER_OFFSET)
@@ -1762,7 +1729,6 @@ def move_in_dialog(line, btn = 1):
             press_dialog_button(btn)
             return True
     return False
-
 
 
 ''' TEXT DRAW BLOCK '''
