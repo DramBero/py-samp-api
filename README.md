@@ -32,6 +32,40 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 **get_vehicle_id()** - returns the used vehicle ID as an integer.
 
+**get_vehicle_lights()** - returns the state of used vehicle's lights as a boolean.
+
+**get_vehicle_engine()** - returns the state of used vehicle's engine as a boolean.
+
+**get_vehicle_siren()** - returns the state of used vehicle's siren as a boolean.
+
+**get_vehicle_lock()** - returns the state of used vehicle's lock as a boolean.
+
+**get_vehicle_color()** - returns the used vehicle's primary color ID as an integer.
+
+**get_vehicle_color2()** - returns the used vehicle's secondary color ID as an integer.
+
+**get_vehicle_speed()** - returns the used vehicle's speed as a float.
+
+**get_player_radio()** - returns the used vehicle's chosen radio station ID as an integer.
+
+**get_radio_name(rad_id)** - accepts radio station ID as an integer. Returns radio station name as a string.
+
+**get_player_state()** - returns the local player's state ID as an integer.
+
+**on_state(state)** - accepts a state ID. Returns a boolean that shows if the local player has that state.
+
+**is_player_in_menu()** - returns a boolean that shows if the local player is in the game menu.
+
+**get_menu_map_data()** - returns local player's map data (x, y, zoom) as a list of floats.
+
+**get_vehicle_plate()** - returns the used vehicle's plate as a string.
+
+**toggle_night_vision()** - toggles the night vision mode.
+
+**toggle_thermal_vision()** - toggles the thermal vision mode.
+
+**set_time(hour)** - sets the local player's time (hour) to the accepted integer.
+
 *Will write down the rest of the functions from the source code in the later updates.*
 
 ## Authors
