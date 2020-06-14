@@ -2,6 +2,8 @@
 
 A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
+
 ## Function description
 ### Main functions block
 **get_player_hp()** - returns local player's HP as a float.
