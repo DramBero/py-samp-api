@@ -94,6 +94,32 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 **send_chat(wtext)** - accepts a string. Sends the string as a chat input.
 
+**show_game_text(text, time, size)** - accepts a string, and two integers. Shows the hardcoded GTA text for a specfied amount of time.
+
+**refresh_scoreboard()** - refreshes the scoreboard (Tab).
+
+**update_scoreboard()** - creates a dictionary with the scoreboard data.
+
+**get_stream_ids()** - returns a list with player ID's in the streamable zone.
+
+**get_target_ped()** - returns ID of the targeted ped as an integer.
+
+**get_id_by_ped(ped)** - accepts an integer. Returns player ID of the ped ID as an integer.
+
+**get_ped_by_id(plid)** - accepts an integer. Returns ped ID of the streamable player ID as an integer.
+
+**get_id_by_name(name)** - accepts a string. Returns player ID of the player name as an integer.
+
+**get_name_by_id(dw_id)** - accepts an integer. Returns player name of the player ID as a string.
+
+**get_lvl_by_id(dw_id)** - accepts an integer. Returns player score (level) of the player ID as an integer.
+
+**get_ping_by_id(dw_id)** - accepts an integer. Returns player ping of the player ID as an integer.
+
+**get_hp_by_id(dw_id)** - accepts an integer. Returns player HP of the streamable player ID as an integer.
+
+**get_armor_by_id(dw_id)** - accepts an integer. Returns player armor of the streamable player ID as an integer.
+
 *Will write down the rest of the functions from the source code in the later updates.*
 
 ## Authors
@@ -106,5 +132,5 @@ This project is licensed under the MIT License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* The Autohotkey SAMP-UDF contributors, whose offsets and most of the functions I used as a base: Chuck_Floyd, Suchty112, paul-phoenix, Agrippa1994, RawDev, ELon, democrazy, MurKotik, McFree, aknqkzxlcs, Godarck, Слюнявчик, MrGPro, Phoenixxx_Czar, Dworkin, Ghost29, slavawar, Artur_iOS, ByNika
+* The Autohotkey SAMP-UDF contributors, whose offsets and most of the functions I used as a base: Chuck_Floyd, Suchty112, paul-phoenix, Agrippa1994, RawDev, ELon, democrazy, MurKotik, McFree, aknqkzxlcs, Godarck, Слюнявчик, MrGPro, Phoenixxx_Czar, Dworkin, Ghost29, slavawar, Artur_iOS, ByNika.
 * The Autohotkey and C++ SAMP API contributors, whose offsets and some of the functions I used as a base: Agrippa1994, MarcelGerber.
