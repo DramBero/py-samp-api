@@ -122,6 +122,14 @@ A pure Python 3.X API for SA:MP client (0.3.7 R1)
 
 **get_armor_by_id(dw_id)** - accepts an integer. Returns player armor of the streamable player ID as an integer.
 
+**get_ped_in_vehicle(place)** - accepts the place number as an integer. Returns the ped ID of a player on that seat.
+
+**get_player_color(dw_id)** - accepts the player ID as an integer. Returns the nickname color as a string with a hex-code.
+
+**get_ped_coords(dw_ped)** - accepts the player ped ID as an integer. Returns the coordinates of the player as a list of floats.
+
+**get_dist_by_ped_id(ped_id)** - accepts the player ped ID as an integer. Returns the distance to the player as a float.
+
 *Will write down the rest of the functions from the source code in the later updates.*
 
 ## Authors
