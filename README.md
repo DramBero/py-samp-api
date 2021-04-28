@@ -1,6 +1,6 @@
 # py-SAMP-api
 
-A pure Python 3.X API for SA:MP client (0.3.7 R1)
+A pure Python 3.X API for SA:MP client (0.3.7-R1, 0.3.7-R2)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
 
